@@ -48,25 +48,24 @@ const tailFormItemLayout = {
 
 const CreateUser = () => {
   const [form] = Form.useForm();
-
+/* 
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
   };
 
+   */
 
-
-
-  
   let history = useNavigate();
+  /*
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [email,setEmail]=useState('');
   const [address,setAddress]=useState('');
   const [phone,setPhone]=useState('');
-  const [website,setWebsite]=useState('');
-
-
-  const sendDataToAPI = () => {
+  const [website,setWebsite]=useState(''); */
+  
+  const sendDataToAPI = (values) => {
+    const {name, username, email, address, phone, website} = values
     axios.post(`http://jsonplaceholder.typicode.com/users`, {
       name,
       username,
@@ -74,8 +73,8 @@ const CreateUser = () => {
       address,
       phone,
       website,
-    }).then(() => {
-      history.push('/read')
+    }).then((response) => {
+      console.log(response, "response")
     })
   }
   
@@ -85,7 +84,7 @@ const CreateUser = () => {
     if (!value) {
       setAutoCompleteResult([]);
     } else {
-      setAutoCompleteResult(['.com'].map((domain) => `${value}${domain}`));
+      setAutoCompleteResult([].map((domain) => `${value}${domain}`));
     }
   };
 
@@ -100,7 +99,7 @@ const CreateUser = () => {
       {...formItemLayout}
       form={form}
       name="register"
-      onFinish={onFinish}
+      onFinish={sendDataToAPI}
       scrollToFirstError
     >
         <Form.Item

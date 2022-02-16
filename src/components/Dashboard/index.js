@@ -9,7 +9,7 @@ import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
+  
   Tr,
   Th,
   Td,
@@ -64,7 +64,7 @@ import {
                     <Tr>
                      
                         <Td>{data.id}</Td>
-                        <Link to='dataTable{data.id}' >
+                        <Link to='/dashboard/id' >
                         <Td> {data.name}</Td>
                         </Link>
                         
